@@ -47,18 +47,20 @@ input.txt{
 
 // Classe à ajouter à un élément pour déclencher son animation d'entrée.
 .anim {
-    animation: slide-in 0.5s ease-out both;
+    animation: slide-in 1.5s ease-out both;
 }
 
 @keyframes slide-in {
     from {
         opacity: 0;
         transform: translateX(-1rem);
+        background-color: #78bdb5;
     }
 
     to {
         opacity: 1;
         transform: translateX(0);
+        background-color: #3FA0E1;
     }
 }
 

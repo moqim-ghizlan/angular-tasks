@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [FormsModule],
@@ -8,6 +9,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './home.html',
 })
 export class Home {
+  constructor(private monRouteur: Router) {}
+
   objectifText: string = '';
   objectifs: string[] = [];
   indexModification: number | null = null;
@@ -23,6 +26,9 @@ export class Home {
     }
     if (this.indexModification === null) {
       this.objectifs.push(objectif);
+      setTimeout(() => {
+        this.monRouteur.navigate(['/about']);
+      }, 1000);
     } else {
       this.objectifs[this.indexModification] = objectif;
     }
