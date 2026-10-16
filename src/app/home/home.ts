@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ActiviteService } from '../services/activite.service';
 
 @Component({
   imports: [FormsModule],
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
   templateUrl: './home.html',
 })
 export class Home {
-  constructor(private monRouteur: Router) {}
+  constructor(
+    private monRouteur: Router,
+    private activiteService: ActiviteService,
+  ) {}
 
   objectifText: string = '';
   objectifs: string[] = [];
