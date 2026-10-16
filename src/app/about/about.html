@@ -1,7 +1,10 @@
 <h2>Activités partagées</h2>
 
+<p>about works!</p>
+<ol>
 @for (objectif of activiteService.objectifs; track $index) {
-  <p class="life-container" animate.enter="anim">{{ objectif }}</p>
+  <li animate.enter="anim">{{ objectif }}</li>
 } @empty {
-  <p>Aucune activité enregistrée.</p>
+  <li>Aucune activité enregistrée.</li>
 }
+</ol>
