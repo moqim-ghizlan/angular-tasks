@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActiviteService } from '../services/activite.service';
 
 @Component({
   imports: [],
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './about.scss',
   templateUrl: './about.html',
 })
-export class About {}
+export class About {
+  readonly activiteService: ActiviteService;
+
+  constructor(activiteService: ActiviteService) {
+    this.activiteService = activiteService;
+  }
+}

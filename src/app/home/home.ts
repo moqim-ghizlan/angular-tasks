@@ -37,9 +37,9 @@ export class Home {
     }
     if (this.indexModification === null) {
       this.activiteService.objectifs.push(objectif);
-      setTimeout(() => {
-        this.monRouteur.navigate(['/about']);
-      }, 1000);
+      // setTimeout(() => {
+      //   this.monRouteur.navigate(['/about']);
+      // }, 1000);
     } else {
       this.activiteService.objectifs[this.indexModification] = objectif;
     }
