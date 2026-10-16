@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActiviteService } from '../services/activite.service';
 
 @Component({
@@ -9,15 +9,23 @@ import { ActiviteService } from '../services/activite.service';
   templateUrl: './consult-activite.html',
 })
 export class ConsultActivite {
+  readonly index: number;
   readonly activite: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private activiteService: ActiviteService,
   ) {
-    const index = Number(this.route.snapshot.params['id']);
-    this.activite = Number.isInteger(index) && index >= 0
-      ? this.activiteService.objectifs[index]
+    const routeIndex = Number(this.route.snapshot.params['id']);
+    this.index = Number.isInteger(routeIndex) && routeIndex >= 0 ? routeIndex : -1;
+    this.activite = this.index >= 0
+      ? this.activiteService.objectifs[this.index]
       : undefined;
+  }
+
+  supprimeElem(index: number): void {
+    this.activiteService.removeItem(index);
+    this.router.navigate(['/']);
   }
 }

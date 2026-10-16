@@ -1,7 +1,14 @@
-<h3>Détail de l’activité :</h3>
+﻿<h3>Détail de l’activité :</h3>
 <ol>
   @if (activite !== undefined) {
     <li>Nom de l’activité : <strong>{{ activite }}</strong></li>
+    <li>
+      <button
+          type="button"
+          class="btn delete"
+          (click)="supprimeElem(index)">Supprimer
+      </button>
+    </li>
   } @else {
     <li>Activité introuvable.</li>
   }
