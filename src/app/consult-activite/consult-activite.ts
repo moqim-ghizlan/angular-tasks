@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ActiviteService } from '../services/activite.service';
 
 @Component({
   imports: [],
@@ -8,11 +9,15 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './consult-activite.html',
 })
 export class ConsultActivite {
-  readonly id: string | undefined;
-  readonly param2: string | undefined;
+  readonly activite: string | undefined;
 
-  constructor(private route: ActivatedRoute) {
-    this.id = this.route.snapshot.params['id'];
-    this.param2 = this.route.snapshot.params['param2'];
+  constructor(
+    private route: ActivatedRoute,
+    private activiteService: ActiviteService,
+  ) {
+    const index = Number(this.route.snapshot.params['id']);
+    this.activite = Number.isInteger(index) && index >= 0
+      ? this.activiteService.objectifs[index]
+      : undefined;
   }
 }
