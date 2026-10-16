@@ -45,6 +45,23 @@ input.txt{
     overflow-wrap: anywhere;
 }
 
+// Classe à ajouter à un élément pour déclencher son animation d'entrée.
+.anim {
+    animation: slide-in 0.5s ease-out both;
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(-1rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 label { display: block; margin-bottom: .5em; }
 .actions { display: flex; flex-wrap: wrap; gap: .5em; margin: .5em 0; }
 .secondary { background: #155784; }
