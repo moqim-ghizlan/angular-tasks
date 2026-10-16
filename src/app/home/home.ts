@@ -12,15 +12,22 @@ import { ActiviteService } from '../services/activite.service';
 export class Home {
   constructor(
     private monRouteur: Router,
-    private activiteService: ActiviteService,
+    readonly activiteService: ActiviteService,
   ) {}
 
   objectifText: string = '';
-  objectifs: string[] = [];
   indexModification: number | null = null;
 
+  get objectifs(): string[] {
+    return this.activiteService.objectifs;
+  }
+
+  set objectifs(objectifs: string[]) {
+    this.activiteService.objectifs = objectifs;
+  }
+
   get nbItems(): number {
-    return this.objectifs.length;
+    return this.activiteService.objectifs.length;
   }
 
   ajoutItem(): void {
@@ -29,19 +36,19 @@ export class Home {
       return;
     }
     if (this.indexModification === null) {
-      this.objectifs.push(objectif);
+      this.activiteService.objectifs.push(objectif);
       setTimeout(() => {
         this.monRouteur.navigate(['/about']);
       }, 1000);
     } else {
-      this.objectifs[this.indexModification] = objectif;
+      this.activiteService.objectifs[this.indexModification] = objectif;
     }
     this.annulerModification();
   }
 
   modifierItem(index: number): void {
     this.indexModification = index;
-    this.objectifText = this.objectifs[index];
+    this.objectifText = this.activiteService.objectifs[index];
   }
 
   annulerModification(): void {
@@ -50,7 +57,7 @@ export class Home {
   }
 
   supprimerItem(index: number): void {
-    this.objectifs.splice(index, 1);
+    this.activiteService.objectifs.splice(index, 1);
     if (this.indexModification === index) {
       this.annulerModification();
     } else if (this.indexModification !== null && index < this.indexModification) {

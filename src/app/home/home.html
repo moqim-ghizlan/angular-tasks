@@ -32,7 +32,7 @@
     </form>
   </div>
   <div class="col">
-    @for (objectif of objectifs; track $index) {
+    @for (objectif of activiteService.objectifs; track $index) {
       <button type="button" class="life-container" animate.enter="anim" [class.editing]="indexModification === $index"
         [attr.aria-pressed]="indexModification === $index" (click)="modifierItem($index)">
         <span>{{ objectif }}</span>
