@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Tp3Angular": {
+    "angular-tasks": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,10 +30,13 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {
+              "baseHref": "/angular-tasks/",
               "budgets": [
                 {
                   "type": "initial",
@@ -60,10 +63,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Tp3Angular:build:production"
+              "buildTarget": "angular-tasks:build:production"
             },
             "development": {
-              "buildTarget": "Tp3Angular:build:development"
+              "buildTarget": "angular-tasks:build:development"
             }
           },
           "defaultConfiguration": "development"
