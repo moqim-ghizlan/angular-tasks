@@ -51,6 +51,10 @@ export class Home {
     this.objectifText = this.activiteService.objectifs[index];
   }
 
+  consulterActivite(index: number): void {
+    this.monRouteur.navigate(['/consultAct', index]);
+  }
+
   annulerModification(): void {
     this.indexModification = null;
     this.objectifText = '';

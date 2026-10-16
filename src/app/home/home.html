@@ -33,10 +33,14 @@
   </div>
   <div class="col">
     @for (objectif of activiteService.objectifs; track $index) {
-      <button type="button" class="life-container" animate.enter="anim" [class.editing]="indexModification === $index"
-        [attr.aria-pressed]="indexModification === $index" (click)="modifierItem($index)">
+      <button type="button" class="life-container"
+              animate.enter="anim" [class.editing]="indexModification === $index"
+              [attr.aria-pressed]="indexModification === $index"
+              (click)="consulterActivite($index)">
         <span>{{ objectif }}</span>
       </button>
+      <button type="button" class="btn secondary"
+              (click)="modifierItem($index)">Modifier</button>
     } @empty {
       <p>Aucune tâche pour le moment. Ajoutez votre première tâche.</p>
     }
