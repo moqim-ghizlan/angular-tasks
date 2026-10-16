@@ -1,15 +1,24 @@
 ﻿<h3>Détail de l’activité :</h3>
-<ol>
-  @if (activite !== undefined) {
-    <li>Nom de l’activité : <strong>{{ activite }}</strong></li>
+@if (activite !== undefined) {
+  <ol>
     <li>
-      <button
-          type="button"
-          class="btn delete"
-          (click)="supprimeElem(index)">Supprimer
-      </button>
+      Nom de l’activité :
+      @if (editionEnCours) {
+        <input id="titre-activite" name="titreActivite" class="txt" type="text" [(ngModel)]="titreModifie" />
+      } @else {
+        <strong>{{ activite }}</strong>
+      }
     </li>
-  } @else {
-    <li>Activité introuvable.</li>
-  }
-</ol>
+  </ol>
+  <div class="actions">
+    <button type="button" class="btn delete" (click)="supprimeElem(index)">Supprimer</button>
+    @if (editionEnCours) {
+      <button type="button" class="btn" [disabled]="!titreModifie.trim()" (click)="sauvegarderTitre()">Sauvegarder</button>
+    } @else {
+      <button type="button" class="btn" (click)="modifierTitre()">Modifier</button>
+      <button type="button" class="btn secondary" (click)="retour()">Retour</button>
+    }
+  </div>
+} @else {
+  <p>Activité introuvable.</p>
+}
